@@ -1,10 +1,10 @@
 #pragma once
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 #include <assert.h>
-#include <stdlib.h>
 
 struct equation {
         char variable;
@@ -21,3 +21,5 @@ struct equation {
 struct equation scan_string_with_equation();
 
 struct equation process_equation(char*, int);
+
+void parsing(char*, char);

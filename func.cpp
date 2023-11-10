@@ -41,7 +41,6 @@ struct equation process_equation(char* user_input, int len_of_user_input) {
     // По умолчанию summand_type = 0. Если найдется переменная в слагаемом, то степень переменной станет 1, а если ^2, то 2.
     char summand_variable = ' ';
     char summand_sign = '+';
-    bool summand_sign_invertion = false;
     int summand_number = 0;
     int summand_degree = 0;
     const int char_to_digit_ratio = 48;
@@ -64,11 +63,6 @@ struct equation process_equation(char* user_input, int len_of_user_input) {
             if (buff_len == 0) {
                 // ... то либо сначала фиксируем знак слагаемого ...
                 if (curr_symbol == '+' || curr_symbol == '-') summand_sign = curr_symbol;
-                // ... либо сбрасываем знак до "+" и начинаем инвертировать его ...
-                if (curr_symbol == '=') {
-                    summand_sign = '+';
-                    summand_sign_invertion = true;
-                }
                 // ... либо выходим из цикла ...
                 if (curr_symbol == '\0') break;
                 // либо просто продолжаем чтение.
@@ -85,8 +79,6 @@ struct equation process_equation(char* user_input, int len_of_user_input) {
                         buff_index++;
                     }
                 }
-                // TODO test
-                printf("NUMBER - %i \n", summand_number);
                 // Если слагаемое закончилось, то это 0 степень.
                 if (buff[buff_index] == '\0') summand_degree = 0;
                 
@@ -115,6 +107,7 @@ struct equation process_equation(char* user_input, int len_of_user_input) {
                     }
                 }
                 // TODO test
+                printf("NUMBER - %i \n", summand_number);
                 printf("VARIABLE - %c \n", summand_variable);
                 printf("DEGREE - %i \n", summand_degree);
                 printf("---------\n");
@@ -137,13 +130,10 @@ struct equation process_equation(char* user_input, int len_of_user_input) {
                     return curr_eq;
                 }
             }
+            // Фиксируем (прибыль) значения
             // Фиксируем знак слагаемого ...
             if (curr_symbol == '+' || curr_symbol == '-') summand_sign = curr_symbol;
-            // ... либо сбрасываем знак до "+" и начинаем инвертировать его ...
-            if (curr_symbol == '=') {
-                summand_sign = '+';
-                summand_sign_invertion = true;
-            }
+
             // Обнуление buff
             for (int i = 0; buff[i] != '\0'; i++){
                 buff[i] = '\0';
