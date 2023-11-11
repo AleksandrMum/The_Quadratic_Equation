@@ -1,4 +1,4 @@
-#include "func.h"
+#include "functions.h"
 
 void parsing(char* buff, char equation_variable) {
     int buff_index = 0;
@@ -46,6 +46,7 @@ void parsing(char* buff, char equation_variable) {
         }
     }
 
+    printf("%s \n", buff);
     // Вывод значение парсинга.
     printf("---------\n");
     printf("NUMBER:    %i \n", summand_number);

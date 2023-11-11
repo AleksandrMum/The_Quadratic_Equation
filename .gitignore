@@ -1,2 +1,6 @@
 *.o
 *.exe
+/temp/
+
+makefile
+/.vscode/
