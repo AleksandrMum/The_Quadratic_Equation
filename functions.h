@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <math.h>
 #include <assert.h>
 #include <windows.h>
 
@@ -24,7 +25,7 @@ struct summand {
 };
 
 struct answer {
-        int discriminant;
+        double discriminant;
         double root_1;
         double root_2;
 };
@@ -38,6 +39,7 @@ struct answer {
 // Ошибки при чтении уравнения
 // Ошибка 6 (критичная)         - уравнение не было введено
 // Ошибка 7 (не критичная)      - введено уравнение типа kx + b
+// Ошибка 8 (критичная)         - введено не уравнение (отсутствуют переменные)
 
 // string_input.cpp
 struct equation get_values_of_equation();
@@ -48,4 +50,4 @@ void print_warning_error(int);
 struct summand parsing(char*, char);
 
 // calculation.cpp
-struct answer calculation(struct equarton *curr_equation);
+struct answer calculation(struct equation);

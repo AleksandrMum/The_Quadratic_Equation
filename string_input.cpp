@@ -121,9 +121,18 @@ struct equation get_values_of_equation() {
         else printf("\n --- \n UNEXPECTED BEHAVIOR \n --- \n");
     }
 
-    // Если введено не квадратное уравнение (a == 0 -> kx + b) то ошибка №7
+    // Если введено не квадратное уравнение (a == 0 -> kx + b) то ошибка №7 или №8
     if (equation_a == 0) {
-        print_warning_error(7);
+        if (equation_b != 0) print_warning_error(7);
+        else if (not(critical_error)) {
+            equation_variable = ' ';
+            equation_a = 0;
+            equation_b = 0;
+            equation_c = 0;
+            critical_error = true;
+            print_warning_error(8);
+
+        }
     }
  
     // Возвращаю значения всего уравнение - a,b,c , символ переменной и состояние критической ошибки.
@@ -156,6 +165,7 @@ void print_warning_error(int error) {
     else if (error == 5) printf("WARNING - The degree does not fit the quadratic equation \n");
     else if (error == 6) printf("ERROR - There are no summands in the equation \n");
     else if (error == 7) printf("WARNING - A linear equation is introduced (max degree is 1) \n");
+    else if (error == 8) printf("ERROR - Equation without variables - impossible to solve \n");
     
     else printf("UNEXPECTED BEHAVIOR - An unknown error has occurred \n");
 }
