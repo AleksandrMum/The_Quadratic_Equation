@@ -1,6 +1,6 @@
 *.o
 *.exe
-/temp/
 
 makefile
+test
 /.vscode/
