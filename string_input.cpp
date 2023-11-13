@@ -23,28 +23,37 @@ struct equation get_values_of_equation() {
     char char_input = ' ';
     while (string_input_len < MAX_LEN_OF_USER_INPUT - 1) {
         char_input = (unsigned char) getchar();
+        // Если ввод уравнения завершен, вставляем \0 и выходим из цикла
         if (char_input == '\n') {
             string_input[string_input_len] = '\0';
             break;
         }
+        // Если введен пробел, игнорируем его, программа сама расставляет в нужных местах пробелы
         else if (char_input == ' ') continue;
+        // Если введен +/-, то смотрим на предыдущие символы
         else if (char_input == '+' || char_input == '-') {
             if (string_input[string_input_len - 1] != ' ') {
                 string_input[string_input_len] = ' ';
                 string_input_len++;
             }
+            // 
             string_input[string_input_len] = char_input;
+            string_input_len++;
         }
+        // Если введен знак "=", то проставляем пробелы вокруг него 
         else if (char_input == '=') {
             string_input[string_input_len] = ' ';
             string_input_len++;
             string_input[string_input_len] = char_input;
             string_input_len++;
             string_input[string_input_len] = ' ';
+            string_input_len++;
         }
-        else string_input[string_input_len] = char_input;
-        string_input_len++;
-        is_summand_in_equation = true;
+        else {
+            string_input[string_input_len] = char_input;
+            string_input_len++;
+            is_summand_in_equation = true;
+        }
     }
 
     // Если в уравнении нет ни одного полноценного слагаемого, возвращаем ошибку №6

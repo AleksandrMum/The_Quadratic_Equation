@@ -17,7 +17,10 @@ struct summand parsing(char* summand, char equation_variable) {
     }
     // Пытаемся прочитать число.
     // Если идет сразу переменная, то число = 1.
-    if ('a' <= summand[buff_index] && summand[buff_index] <= 'z') summand_number = 1;
+    if ('a' <= summand[buff_index] && summand[buff_index] <= 'z') {
+        if (summand_sign == '+') summand_number = 1;
+        else summand_number = -1;
+    }
     else {
         // Иначе начинаем читать число
         while ('0' <= summand[buff_index] && summand[buff_index] <= '9') {
