@@ -13,13 +13,15 @@
 
 struct equation {
         char variable;
-        int a; int b; int c;
+        double a;
+        double b;
+        double c;
         bool critical_error;
         };
 
 struct summand {
         char variable;
-        int number;
+        double number;
         int degree;
         int error;
 };
@@ -38,16 +40,16 @@ struct answer {
 // Ошибка 5 (не критичная)      - введено уравнение с степенью, не соответствующей квадратному уравнению
 // Ошибки при чтении уравнения
 // Ошибка 6 (критичная)         - уравнение не было введено
-// Ошибка 7 (не критичная)      - введено уравнение типа kx + b
-// Ошибка 8 (критичная)         - введено не уравнение (отсутствуют переменные)
+// Ошибка 7 (критичная)         - введено не уравнение (отсутствуют переменные)
 
-// string_input.cpp
+
+// equation.cpp
+void solution_of_equation();
+struct answer calculation(struct equation);
+bool is_double_zero(double);
+
+// input_and_parsing.cpp
 struct equation get_values_of_equation();
 void clean_array(char*);
 void print_warning_error(int);
-
-// parsing.cpp
 struct summand parsing(char*, char);
-
-// calculation.cpp
-struct answer calculation(struct equation);
