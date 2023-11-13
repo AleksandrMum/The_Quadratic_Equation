@@ -32,7 +32,14 @@ struct equation get_values_of_equation() {
         else if (char_input == ' ') continue;
         // Если введен +/-, то смотрим на предыдущие символы
         else if (char_input == '+' || char_input == '-') {
-            if (string_input[string_input_len - 1] != ' ') {
+            // Если предыдущий символ также является знаком +/- то сокращаем их по правилам математики
+            if (string_input[string_input_len - 1] == '+' || string_input[string_input_len - 1] == '-') {
+                if (string_input[string_input_len - 1] == char_input) string_input[string_input_len - 1] = '+';
+                else string_input[string_input_len - 1] = '-';
+                continue;
+            }
+            // Иначе если предыдущий символ не пробел (разделяющий слагаемые), добавляем его
+            else if (string_input[string_input_len - 1] != ' ') {
                 string_input[string_input_len] = ' ';
                 string_input_len++;
             }

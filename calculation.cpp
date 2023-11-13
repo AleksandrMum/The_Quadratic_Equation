@@ -21,7 +21,7 @@ struct answer calculation(struct equation curr_equation) {
             return curr_answer;
         }
         // Если дискриминант нулевой, корни одинаковы
-        else if (discriminant == 0) {
+        else if ((int) discriminant == 0) {
             root_1 = root_2 = (- curr_b) / (2 * curr_a);
             
         }
