@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdio.h>
+
 // Печатает инструкцию по вводу уравнения пользователем
 void print_instruction();
 
@@ -17,3 +19,12 @@ void print_warning(int);
 
 // Чистит строку в массиве char и возвращает 0 - длину пустой строки
 int clean_string(char*);
+
+// Возвращает истину, если символ это цифра
+bool is_char_number(char);
+
+// Возвращает истину, если символ это буква
+bool is_char_letter(char);
+
+// Принимает символ цифры, возвращает число
+int char_to_int(char);

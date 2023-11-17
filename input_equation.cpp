@@ -61,8 +61,10 @@ bool input_equation(char* curr_equation) {
     }
 
 #ifndef NDEBUG
-    printf("---------\n");
-    print_equation(curr_equation);
+    if (is_input_successful) {
+        printf("---------\n");
+        print_equation(curr_equation);
+    }
 #endif
 
     return is_input_successful;

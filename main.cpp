@@ -5,6 +5,7 @@
 
 #include "input_equation.h"
 #include "parsing_equation.h"
+#include "solve_equation.h"
 
 // #define NDEBUG
 
@@ -23,6 +24,26 @@ int main() {
         }
         else {
             struct equation curr_equation_values = get_equation_values(curr_equation);
+            if (curr_equation_values.eq_error) {
+                printf("SOLVE IMPOSSIBLE \n");
+            }
+            else {
+                printf("---------\n");
+                printf("Value A: %lf \n", curr_equation_values.a);
+                printf("Value B: %lf \n", curr_equation_values.b);
+                printf("Value C: %lf \n", curr_equation_values.c);
+                printf("---------\n");
+                struct roots curr_roots = get_equation_roots(&curr_equation_values);
+                if (curr_roots.linear_equation)
+                    printf("Linear equation \nRoot: %lf \n", curr_roots.root_1);
+                else if (curr_roots.negative_discriminant)
+                    printf("Discriminant is negative \nNo roots \n");
+                else {
+                    printf("Discriminant: %lf \n", curr_roots.discriminant);
+                    printf("Root 1: %lf \n", curr_roots.root_1);
+                    printf("Root 2: %lf \n", curr_roots.root_2); 
+                }
+            }
         }
 
     } while (is_there_new_equation()); 

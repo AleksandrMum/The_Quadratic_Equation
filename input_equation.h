@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdio.h>
+
 // Принимает ссылку на массив char и записывает в него уравнение пользователя
 bool input_equation(char*);
 

@@ -1,16 +1,10 @@
 #pragma once
 
+#include <stdio.h>
+#include <string.h>
+
 // Принимает уравнение, возвращает структуру, содержащую его значения a, b, c, имя переменной
 struct equation get_equation_values(char*);
 
 // Парсирует слагаемое и возвращает структуру, содержащую переменную, число, степень переменной и ошибку (если такова есть)
 struct summand parsing_summand(char*); 
-
-// Возвращает истину, если символ это цифра
-bool is_char_number(char);
-
-// Возвращает истину, если символ это буква
-bool is_char_letter(char);
-
-// Принимает символ цифры, возвращает число
-int char_to_int(char);
