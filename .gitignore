@@ -1,8 +1,6 @@
 *.o
 *.exe
 
-makefile
-test
-tasks
+TODO.txt
 /.vscode/
 /temp/
